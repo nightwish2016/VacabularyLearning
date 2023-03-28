@@ -88,6 +88,7 @@ class utilsVacabulary:
 
     def GetSeveralWordsToReview(self,databaseid,wordCount):
         allWordsList=self.GetAllWordsNeedToReview(databaseid)
+        newWordsList=[w for w in allWordsList if w.Status=="New"]
         finalWordsList=[]
         reviewWordList=[]
         for w in allWordsList:            
@@ -109,8 +110,22 @@ class utilsVacabulary:
             wordCount=size
         if wordCount>0 :
             print("******The following words status will update to Review:******" )
-        while j<wordCount:           
-            i=random.randint(0,wordCount)     
+        
+        k=0
+        newWordCount=5
+        if len(newWordsList)<newWordCount:
+            newWordCount=len(newWordsList)
+     
+        while k<newWordCount:
+            i=random.randint(0,(newWordCount-1))   
+            words = [w for w in finalWordsList if w.Word== newWordsList[i].Word]  
+            if len(words)==0:
+                print(newWordsList[i].Word)
+                finalWordsList.append(newWordsList[i])  
+                k=k+1 
+
+        while j<(wordCount-newWordCount):           
+            i=random.randint(0,(wordCount-1))     
             words = [w for w in finalWordsList if w.Word== reviewWordList[i].Word]  
             if len(words)==0:
                 print(reviewWordList[i].Word)
