@@ -9,7 +9,7 @@ from NotionRecurringTask.notion import *
 import random
 
 import logging
-logging.basicConfig(encoding='utf-8', level=logging.INFO)
+#logging.basicConfig(encoding='utf-8', level=logging.INFO)
 class utilsVacabulary:
     def __init__(self,auth,deltaTime): 
         self.__baseurl="https://api.notion.com" 
