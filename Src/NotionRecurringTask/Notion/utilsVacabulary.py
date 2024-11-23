@@ -54,7 +54,8 @@ class utilsVacabulary:
             w2.LearningTimes=w["properties"]["LearningTimes"]['number'] 
             if w2.LearningTimes is None:
                 w2.LearningTimes=0
-            w2.Word=w["properties"]["word"]["title"][0]["text"]['content'] 
+            if len(w["properties"]["word"]["title"])>0 :                
+                w2.Word=w["properties"]["word"]["title"][0]["text"]['content'] 
             if  w["properties"]["Status"]['select'] is not None:  
                 w2.Status=w["properties"]["Status"]['select']['name']
             
