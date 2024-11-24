@@ -101,6 +101,10 @@ class utilsVacabulary:
                 reviewWordList.append(w)
             elif w.Duration>=6 and w.LearningTimes<=4:
                 reviewWordList.append(w)
+            elif w.Duration>=7 and w.LearningTimes<=5:
+                reviewWordList.append(w)
+            elif w.Duration>=10 and w.LearningTimes<=6:
+                reviewWordList.append(w)
 
         wordsWithReview_list=self.getWordsWithStatus(databaseid,"Review")
         if len(wordsWithReview_list["results"])>0:
