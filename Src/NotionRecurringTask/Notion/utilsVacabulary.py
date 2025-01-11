@@ -117,7 +117,7 @@ class utilsVacabulary:
             print("******The following words status will update to Review:******" )
         
         k=0
-        newWordCount=5
+        newWordCount=3
         if len(newWordsList)<newWordCount:
             newWordCount=len(newWordsList)
      
