@@ -107,6 +107,9 @@ class utilsVacabulary:
                 reviewWordList.append(w)
 
         wordsWithReview_list=self.getWordsWithStatus(databaseid,"Review")
+	if len(wordsWithReview_list)>=wordCount:  
+	   print("Already have enough words for review")
+	   return finalWordsList
         if len(wordsWithReview_list["results"])>0:
             wordCount=wordCount-len(wordsWithReview_list["results"])
         size=len(reviewWordList)
