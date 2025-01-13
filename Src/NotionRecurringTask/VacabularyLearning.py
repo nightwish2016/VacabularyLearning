@@ -20,7 +20,7 @@ class VacabularyLearning:
 
         reviewwordlist=u.GetSeveralWordsToReview(databaseid,wordsCount)  
         if len(reviewwordlist)>0:
-           u.updateWordStatusToReview(reviewwordlist)
+          u.updateWordStatusToReview(reviewwordlist)
 
 
         # u.getAllReviewedTodayWords(databaseid)
