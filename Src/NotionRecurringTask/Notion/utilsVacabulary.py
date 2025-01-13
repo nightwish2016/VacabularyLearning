@@ -106,10 +106,7 @@ class utilsVacabulary:
             elif w.Duration>=10 and w.LearningTimes<=6:
                 reviewWordList.append(w)
 
-        wordsWithReview_list=self.getWordsWithStatus(databaseid,"Review")
-        if len(wordsWithReview_list)>=wordCount:
-            print("Already have enough words for review")
-            return finalWordsList
+        wordsWithReview_list=self.getWordsWithStatus(databaseid,"Review")       
         if len(wordsWithReview_list["results"])>0:
             wordCount=wordCount-len(wordsWithReview_list["results"])
         size=len(reviewWordList)
@@ -118,7 +115,8 @@ class utilsVacabulary:
             wordCount=size
         if wordCount>0 :
             print("******The following words status will update to Review:******" )
-        
+        else:
+            return finalWordsList
         k=0
         newWordCount=3
         if len(newWordsList)<newWordCount:
