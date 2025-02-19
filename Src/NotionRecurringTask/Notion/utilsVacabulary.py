@@ -131,12 +131,12 @@ class utilsVacabulary:
                 k=k+1 
 
         while j<(wordCount-newWordCount):           
-            i=random.randint(0,(wordCount-1))     
-            words = [w for w in finalWordsList if w.Word== reviewWordList[i].Word]  
-            if len(words)==0:
-                print(reviewWordList[i].Word)
-                finalWordsList.append(reviewWordList[i]) 
-                j=j+1
+            i=random.randint(0,len(reviewWordList)-1)     
+            # words = [w for w in finalWordsList if w.Word== reviewWordList[i].Word]  
+            # if len(words)==0:
+            print(reviewWordList[i].Word)
+            finalWordsList.append(reviewWordList[i]) 
+            j=j+1
             #filter duplicate data
         return finalWordsList
                    
