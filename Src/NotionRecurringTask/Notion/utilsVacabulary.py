@@ -144,8 +144,8 @@ class utilsVacabulary:
         allNeedToReviewWords_list=[]  
         wordList=self.getAllWordsForReview(databaseid)    
         
-        if wordList['results'] is not None:
-             for w in wordList['results']:
+        if wordList is not None:
+             for w in wordList:
                 w2= Word()
                 w2.PageId=w["id"]
                 w2.CreatedDate=w["properties"]["CreatedDate"]["created_time"]    
@@ -228,10 +228,30 @@ class utilsVacabulary:
   }
         """   
         
-        data=json.loads(body)	      
-        s=client.send_post("databases/{0}/query".format(databaseid),data) 
-        # print(s)
-        return s
+        data = json.loads(body)
+        all_results = []
+        has_more = True
+        next_cursor = None
+
+        # 循环分页获取所有数据
+        while has_more:
+            # 添加分页参数
+            if next_cursor:
+                data["start_cursor"] = next_cursor
+            
+            # 发送请求
+            response = client.send_post(f"databases/{databaseid}/query", data)
+            
+            # 处理结果
+            if "results" in response:
+                all_results.extend(response["results"])
+            
+            # 更新分页状态
+            has_more = response.get("has_more", False)
+            next_cursor = response.get("next_cursor")
+
+    
+        return all_results
     
     def getWordsWithStatus(self,databaseid,status):
             client=self.client
