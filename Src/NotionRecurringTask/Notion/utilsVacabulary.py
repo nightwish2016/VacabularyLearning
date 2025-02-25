@@ -134,9 +134,10 @@ class utilsVacabulary:
             i=random.randint(0,len(reviewWordList)-1)     
             # words = [w for w in finalWordsList if w.Word== reviewWordList[i].Word]  
             # if len(words)==0:
-            print(reviewWordList[i].Word)
-            finalWordsList.append(reviewWordList[i]) 
-            j=j+1
+            if not any(w.Word == reviewWordList[i].Word for w in finalWordsList):  
+                print(reviewWordList[i].Word)
+                finalWordsList.append(reviewWordList[i]) 
+                j=j+1
             #filter duplicate data
         return finalWordsList
                    
