@@ -105,7 +105,7 @@ class utilsVacabulary:
                 reviewWordList.append(w)
             elif w.Duration>=10 and w.LearningTimes<=6:
                 reviewWordList.append(w)
-
+        reviewWordList = sorted(reviewWordList, key=lambda w: w.LearningTimes, reverse=True)
         wordsWithReview_list=self.getWordsWithStatus(databaseid,"Review")       
         if len(wordsWithReview_list["results"])>0:
             wordCount=wordCount-len(wordsWithReview_list["results"])
@@ -129,12 +129,23 @@ class utilsVacabulary:
                 print(newWordsList[i].Word)
                 finalWordsList.append(newWordsList[i])  
                 k=k+1 
+        #获取前6条已经学习过最多次的记录
+        k=0
+        reviewListsize=len(reviewWordList)    
+        if reviewListsize>6 :  
+            while k<6 :
+                finalWordsList.append(reviewWordList[k])
+                k=k+1
+                j=j+1            
+        else:
+            while k<reviewListsize :
+                finalWordsList.append(reviewWordList[k])
+                k=k+1
+                j=j+1
 
-        while j<(wordCount-newWordCount):           
-            i=random.randint(0,len(reviewWordList)-1)     
-            # words = [w for w in finalWordsList if w.Word== reviewWordList[i].Word]  
-            # if len(words)==0:
-            if not any(w.Word == reviewWordList[i].Word for w in finalWordsList):  
+        while j<(wordCount-newWordCount) and reviewListsize>6: 
+            i=random.randint(6,reviewListsize-1)                                   
+            if not any(w.Word == reviewWordList[i].Word for w in finalWordsList) :  
                 print(reviewWordList[i].Word)
                 finalWordsList.append(reviewWordList[i]) 
                 j=j+1
