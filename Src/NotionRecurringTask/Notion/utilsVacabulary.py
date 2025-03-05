@@ -121,8 +121,10 @@ class utilsVacabulary:
         newWordCount=3
         if len(newWordsList)<newWordCount:
             newWordCount=len(newWordsList)
-     
-        while k<newWordCount:
+        utc_timestamp = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc) 
+        now_utc8=utc_timestamp+dt.timedelta(hours=8) 
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] 
+        while k<newWordCount and  days[now_utc8.weekday()] not in ['Saturday', 'Sunday']:
             i=random.randint(0,(newWordCount-1))   
             words = [w for w in finalWordsList if w.Word== newWordsList[i].Word]  
             if len(words)==0:
