@@ -133,9 +133,12 @@ class utilsVacabulary:
                 k=k+1 
         #获取前6条已经学习过最多次的记录
         k=0
+        reviewordCount2=6
+        if wordCount<=6:
+            reviewordCount2=wordCount       
         reviewListsize=len(reviewWordList)    
-        if reviewListsize>6 :  
-            while k<6 :
+        if reviewListsize>reviewordCount2 :  
+            while k<reviewordCount2 :
                 finalWordsList.append(reviewWordList[k])
                 k=k+1
                 j=j+1            
