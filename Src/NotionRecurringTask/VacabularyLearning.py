@@ -5,7 +5,7 @@ import logging
 class VacabularyLearning:
     def __init__(self):       
         pass
-    def process(self,auth,databaseid,deltaTimeWithUTC,wordsCount):            
+    def process(self,auth,databaseid,deltaTimeWithUTC,wordsCount,newWordCount):            
         u=utilsVacabulary(auth,deltaTimeWithUTC)		
         # days=0
         # u.createDailyTask(taskConfiguration_dabaseid,offDayDatabaseId,databaseid)
@@ -18,7 +18,7 @@ class VacabularyLearning:
           #如果已经有8个是Review状态，那么只更新2个word成Review状态*******
         #old word,new word 优化成一个notion request
 
-        reviewwordlist=u.GetSeveralWordsToReview(databaseid,wordsCount)  
+        reviewwordlist=u.GetSeveralWordsToReview(databaseid,wordsCount,newWordCount)  
         if len(reviewwordlist)>0:
           u.updateWordStatusToReview(reviewwordlist)
 

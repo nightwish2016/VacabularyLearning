@@ -87,7 +87,7 @@ class utilsVacabulary:
         s=client.send_patch("pages/{0}".format(pageid),data) #read all data from databases    
         # print(s)
 
-    def GetSeveralWordsToReview(self,databaseid,wordCount):
+    def GetSeveralWordsToReview(self,databaseid,wordCount,newWordCount):
         allWordsList=self.GetAllWordsNeedToReview(databaseid)
         newWordsList=[w for w in allWordsList if w.Status=="New"]
         finalWordsList=[]
@@ -118,12 +118,14 @@ class utilsVacabulary:
         else:
             return finalWordsList
         k=0
-        newWordCount=3
+        # newWordCount=3
         if len(newWordsList)<newWordCount:
             newWordCount=len(newWordsList)
         utc_timestamp = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc) 
         now_utc8=utc_timestamp+dt.timedelta(hours=8) 
         days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] 
+        if days[now_utc8.weekday()]  in ['Saturday', 'Sunday']:
+            newWordCount=0
         while k<newWordCount and  days[now_utc8.weekday()] not in ['Saturday', 'Sunday']:
             i=random.randint(0,(newWordCount-1))   
             words = [w for w in finalWordsList if w.Word== newWordsList[i].Word]  
