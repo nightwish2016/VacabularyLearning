@@ -6,5 +6,6 @@ if __name__ == "__main__":
     timeDeltaWithUTC=8
     wordsCount=15
     newWordCount=1
+    oldWordCount=13
     knotion=VacabularyLearning()
-    knotion.process(auth,databaseid,timeDeltaWithUTC,wordsCount,newWordCount)
+    knotion.process(auth,databaseid,timeDeltaWithUTC,wordsCount,newWordCount,oldWordCount)

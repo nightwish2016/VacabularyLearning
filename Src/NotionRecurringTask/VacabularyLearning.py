@@ -5,7 +5,7 @@ import logging
 class VacabularyLearning:
     def __init__(self):       
         pass
-    def process(self,auth,databaseid,deltaTimeWithUTC,wordsCount,newWordCount):            
+    def process(self,auth,databaseid,deltaTimeWithUTC,wordsCount,newWordCount,oldWordCount):            
         u=utilsVacabulary(auth,deltaTimeWithUTC)		
         # days=0
         # u.createDailyTask(taskConfiguration_dabaseid,offDayDatabaseId,databaseid)

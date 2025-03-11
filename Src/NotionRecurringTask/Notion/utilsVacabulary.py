@@ -87,7 +87,7 @@ class utilsVacabulary:
         s=client.send_patch("pages/{0}".format(pageid),data) #read all data from databases    
         # print(s)
 
-    def GetSeveralWordsToReview(self,databaseid,wordCount,newWordCount):
+    def GetSeveralWordsToReview(self,databaseid,wordCount,newWordCount,reviewordCount2):
         allWordsList=self.GetAllWordsNeedToReview(databaseid)
         newWordsList=[w for w in allWordsList if w.Status=="New"]
         finalWordsList=[]
@@ -133,10 +133,10 @@ class utilsVacabulary:
                 print(newWordsList[i].Word)
                 finalWordsList.append(newWordsList[i])  
                 k=k+1 
-        #获取前6条已经学习过最多次的记录
+        #获取前x条已经学习过最多次的记录
         k=0
-        reviewordCount2=6
-        if wordCount<=6:
+        # reviewordCount2=6
+        if wordCount<=reviewordCount2:
             reviewordCount2=wordCount       
         reviewListsize=len(reviewWordList)    
         if reviewListsize>reviewordCount2 :  
@@ -150,8 +150,8 @@ class utilsVacabulary:
                 k=k+1
                 j=j+1
 
-        while j<(wordCount-newWordCount) and reviewListsize>6: 
-            i=random.randint(6,reviewListsize-1)                                   
+        while j<(wordCount-newWordCount) and reviewListsize>reviewordCount2: 
+            i=random.randint(reviewordCount2,reviewListsize-1)                                   
             if not any(w.Word == reviewWordList[i].Word for w in finalWordsList) :  
                 print(reviewWordList[i].Word)
                 finalWordsList.append(reviewWordList[i]) 
