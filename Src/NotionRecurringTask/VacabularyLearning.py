@@ -18,7 +18,7 @@ class VacabularyLearning:
           #如果已经有8个是Review状态，那么只更新2个word成Review状态*******
         #old word,new word 优化成一个notion request
 
-        reviewwordlist=u.GetSeveralWordsToReview(databaseid,wordsCount,newWordCount)  
+        reviewwordlist=u.GetSeveralWordsToReview(databaseid,wordsCount,newWordCount,oldWordCount)  
         if len(reviewwordlist)>0:
           u.updateWordStatusToReview(reviewwordlist)
 
