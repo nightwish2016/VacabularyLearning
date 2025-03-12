@@ -95,15 +95,15 @@ class utilsVacabulary:
         for w in allWordsList:            
             if w.Duration>=1 and w.LearningTimes<=1:
                 reviewWordList.append(w)
-            elif w.Duration>=3 and w.LearningTimes<=2:
+            elif w.Duration>=3 and w.LearningTimes==2:
                 reviewWordList.append(w)
-            elif w.Duration>=4 and w.LearningTimes<=3:
+            elif w.Duration>=4 and w.LearningTimes==3:
                 reviewWordList.append(w)
-            elif w.Duration>=6 and w.LearningTimes<=4:
+            elif w.Duration>=6 and w.LearningTimes==4:
                 reviewWordList.append(w)
-            elif w.Duration>=7 and w.LearningTimes<=5:
+            elif w.Duration>=7 and w.LearningTimes==5:
                 reviewWordList.append(w)
-            elif w.Duration>=10 and w.LearningTimes<=6:
+            elif w.Duration>=10 and w.LearningTimes==6:
                 reviewWordList.append(w)
         reviewWordList = sorted(reviewWordList, key=lambda w: w.LearningTimes, reverse=True)
         wordsWithReview_list=self.getWordsWithStatus(databaseid,"Review")       
