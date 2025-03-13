@@ -122,7 +122,7 @@ class utilsVacabulary:
         if len(newWordsList)<newWordCount:
             newWordCount=len(newWordsList)
         utc_timestamp = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc) 
-        now_utc8=utc_timestamp+dt.timedelta(hours=8) 
+        now_utc8=utc_timestamp+dt.timedelta(hours=self.deltaTime) 
         days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] 
         if days[now_utc8.weekday()]  in ['Saturday', 'Sunday']:
             newWordCount=0
@@ -171,7 +171,7 @@ class utilsVacabulary:
                 if w["properties"]["LearningDate"]["date"] is not None:
                     learningDateStr=w["properties"]["LearningDate"]["date"]["start"]
                     w2.LearningDate=learningDateStr
-                    dateNow = datetime.now() 
+                    dateNow = datetime.now()+dt.timedelta(hours=self.deltaTime)   
                     learningDate = datetime.strptime(learningDateStr, '%Y-%m-%d')  
                     duration=(dateNow-learningDate).days
                     w2.Duration=duration
