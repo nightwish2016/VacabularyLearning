@@ -10,3 +10,4 @@ class Word:
         self.CreatedDate=""
         self.Duration=""
         self.PageId=""
+        self.ExplanationIsEmpty=False

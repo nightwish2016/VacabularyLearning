@@ -89,7 +89,7 @@ class utilsVacabulary:
 
     def GetSeveralWordsToReview(self,databaseid,wordCount,newWordCount,reviewordCount2):
         allWordsList=self.GetAllWordsNeedToReview(databaseid)
-        newWordsList=[w for w in allWordsList if w.Status=="New"]
+        newWordsList=[w for w in allWordsList if w.Status=="New" and w.ExplanationIsEmpty==False]
         finalWordsList=[]
         reviewWordList=[]
         for w in allWordsList:            
@@ -167,6 +167,9 @@ class utilsVacabulary:
              for w in wordList:
                 w2= Word()
                 w2.PageId=w["id"]
+                
+                if len(w["properties"]["Explanation"]["rich_text"])==0:
+                    w2.ExplanationIsEmpty=True
                 w2.CreatedDate=w["properties"]["CreatedDate"]["created_time"]    
                 if w["properties"]["LearningDate"]["date"] is not None:
                     learningDateStr=w["properties"]["LearningDate"]["date"]["start"]
