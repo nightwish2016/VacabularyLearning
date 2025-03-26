@@ -156,10 +156,7 @@ class utilsVacabulary:
             wordCount2=wordCount
         for i in range(reviewordCount2, wordCount2):
             print(reviewWordList[i].Word)
-            finalWordsList.append(reviewWordList[i]) 
-            
-        
-          
+            finalWordsList.append(reviewWordList[i])                               
         return finalWordsList
                    
     def GetAllWordsNeedToReview(self,databaseid):
