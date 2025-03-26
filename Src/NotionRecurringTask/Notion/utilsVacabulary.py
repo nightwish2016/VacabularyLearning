@@ -111,8 +111,7 @@ class utilsVacabulary:
             wordCount=wordCount-len(wordsWithReview_list["results"])
         size=len(reviewWordList)
         j=0
-        if wordCount>size:
-            wordCount=size
+        
         if wordCount>0 :
             print("******The following words status will update to Review:******" )
         else:
@@ -149,14 +148,18 @@ class utilsVacabulary:
                 finalWordsList.append(reviewWordList[k])
                 k=k+1
                 j=j+1
-
-        while j<(wordCount-newWordCount) and reviewListsize>reviewordCount2: 
-            i=random.randint(reviewordCount2,reviewListsize-1)                                   
-            if not any(w.Word == reviewWordList[i].Word for w in finalWordsList) :  
-                print(reviewWordList[i].Word)
-                finalWordsList.append(reviewWordList[i]) 
-                j=j+1
-            #filter duplicate data
+        #获取剩下的需要review的单词
+        wordCount2=0
+        if wordCount>size:
+            wordCount2=size
+        else:
+            wordCount2=wordCount
+        for i in range(reviewordCount2, wordCount2):
+            print(reviewWordList[i].Word)
+            finalWordsList.append(reviewWordList[i]) 
+            
+        
+          
         return finalWordsList
                    
     def GetAllWordsNeedToReview(self,databaseid):
