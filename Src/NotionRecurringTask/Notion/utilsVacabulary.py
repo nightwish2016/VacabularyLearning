@@ -154,7 +154,7 @@ class utilsVacabulary:
             wordCount2=size
         else:
             wordCount2=wordCount
-        for i in range(reviewordCount2, wordCount2):
+        for i in range(reviewordCount2, wordCount2-newWordCount):
             print(reviewWordList[i].Word)
             finalWordsList.append(reviewWordList[i])                               
         return finalWordsList
