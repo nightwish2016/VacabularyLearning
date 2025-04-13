@@ -6,7 +6,7 @@ if __name__ == "__main__":
     databaseid=os.getenv('NOTION_DB')
     timeDeltaWithUTC=8
     wordsCount=15
-    newWordCount=1
+    newWordCount=2
     oldWordCount=6
     knotion=VacabularyLearning()
     knotion.process(auth,databaseid,timeDeltaWithUTC,wordsCount,newWordCount,oldWordCount)
