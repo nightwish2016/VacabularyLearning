@@ -1,6 +1,9 @@
 from NotionRecurringTask.VacabularyLearning import VacabularyLearning
 import datetime as dt
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 if __name__ == "__main__":
     auth=os.getenv('AUTH')
     databaseid=os.getenv('NOTION_DB')
